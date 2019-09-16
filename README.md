@@ -23,7 +23,7 @@ Let's go through an example, we want to create an OP that can only translate in 
 3. Rename your new OP. We'll rename it ```TranslateY```.
 4. Make your changes:
 	- Rewrite the function now located at ```/project1/RTK/operators/translateY/processfun```. We will change it to contain the code:
-``` vec2 thismap(vec3 p){
+	``` vec2 thismap(vec3 p){
 	p.y -= @Translate;
 	return inputOp1(p);
 	}

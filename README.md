@@ -17,6 +17,10 @@ press shift+rightclick to open op create dialog for RTK. Place some ops, create 
 - change datastructure to support mat. interpolation
 
 ## Make your own OPs
+Please note that there is quite a big library of SDF functions included in this project (see references below). It is located at ```/project1/RTK/hg_sdf1```. Most if the stuff there is not yet implemented as an OP in this toolkit and its very simple to do that. You can simply make a new OP that just uses one of the functions from the lib (see for example the fGDF-op).
+
+Also, if you make new OPs, consider sharing them/making a pull request.
+
 Let's go through an example, we want to create an OP that can only translate in Y for some reason.
 1. Go to ```/project1/RTK/operators```. Here you can find all the ops that where created so far. 
 2. Copy one of them. Copy something simple and similar to what you want to achieve, for example the ```Translate``` OP.

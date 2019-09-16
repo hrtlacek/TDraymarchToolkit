@@ -39,6 +39,7 @@ Please note: Your function needs to take a vec3 and return a vec2. Variables beg
 - customize your coponent to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```.
 
 5. go to ```/project1/RTK/operators/translateY/filterSetup``` and run the ```filterSetup``` script.
+6. Add your new op to the menu: go to ```/project1/RTK/menu/menu``` and add an entry in the ```table1``` in the corresponding column. It needs to be exactly the name of your new op.
 
 ## References
 Thanks to [MERCURY](http://mercury.sexy), (their [library](http://mercury.sexy/hg_sdf) is included here) and [Inigo Quilez](https://www.iquilezles.org/index.html) for all the good articles and formulas. Please check MERCURY's licence.

@@ -29,9 +29,10 @@ Let's go through an example, we want to create an OP that can only translate in 
 	return inputOp1(p);
 	}
 	```
+
 Please note: Your function needs to take a vec3 and return a vec2. Variables beginning with ```@``` are goingto be parsed to reference the components custom parameters. ```inputOP1``` will be parsed to reference the OP's input.
 
-	- customize your coponent to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```.
+- customize your coponent to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```.
 
 5. go to ```/project1/RTK/operators/translateY/filterSetup``` and run the ```filterSetup``` script.
 

@@ -24,7 +24,7 @@ Also, if you make new OPs, consider sharing them/making a pull request.
 Let's go through an example, we want to create an OP that can only translate in Y for some reason.
 1. Go to ```/project1/RTK/operators```. Here you can find all the ops that where created so far. 
 2. Copy one of them. Copy something simple and similar to what you want to achieve, for example the ```Translate``` OP.
-3. Rename your new OP. We'll rename it ```TranslateY```.
+3. Rename your new OP. We'll rename it ```translateY```.
 4. Make your changes:
 	- Rewrite the function now located at ```/project1/RTK/operators/translateY/processfun```. We will change it to contain the code:
 	``` 
@@ -34,9 +34,9 @@ Let's go through an example, we want to create an OP that can only translate in 
 	}
 	```
 
-Please note: Your function needs to take a vec3 and return a vec2. Variables beginning with ```@``` are goingto be parsed to reference the components custom parameters. ```inputOP1``` will be parsed to reference the OP's input.
+Please note: Your function needs to take a vec3 and return a vec2(the first element is the distance, the second is a material ID. This is probably going to change soon to be a vec4 to enable interpolations between materials). Variables beginning with ```@``` are going to be parsed to reference the components custom parameters. ```inputOP1``` will be parsed to reference the OP's input.
 
-- customize your coponent to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```.
+- customize your component to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```. Only Floats and XYZ type parameters are supported at the moment.
 
 5. go to ```/project1/RTK/operators/translateY/filterSetup``` and run the ```filterSetup``` script.
 6. Add your new op to the menu: go to ```/project1/RTK/menu/menu``` and add an entry in the ```table1``` in the corresponding column. It needs to be exactly the name of your new op.

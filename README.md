@@ -1,6 +1,6 @@
 # TDraymarchToolkit
-A raymarch Toolkit for TouchDesigner
-![alt text](TDmovieOut0.0.tif)
+A Raymarch Toolkit for TouchDesigner
+![alt text](demo.PNG)
 
 ![alt text](rtkDemo.PNG)
 

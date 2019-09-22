@@ -1,20 +1,18 @@
 # TDraymarchToolkit
 A raymarch Toolkit for TouchDesigner
+![alt text](TDmovieOut0.0.tif)
 
-![alt text](img.PNG)
+![alt text](rtkDemo.PNG)
 
 ## Usage:
-press shift+rightclick to open op create dialog for RTK. Place some ops, create a stanard touchdesigner render TOP, camera COMP and Light COMP to make use of RTKs render OP.
+press shift+right click to open op create dialog for RTK. Place some ops, create a standard TouchDesigner render TOP, camera COMP and Light COMP to make use of RTKs render OP.
 
 ## Limitations/known Issues:
 - You cannot rename OPs without running into problems.
-- Material interpolation when using smoothUnion is broken at the moment
 - only one light supported
+- interpolation between 3 or more materials is broken.
 
-## TODOs/next Steps:
-- anti aliasing
-- refine materials
-- change datastructure to support mat. interpolation
+![alt text](RTKops.PNG)
 
 ## Make your own OPs
 Please note that there is quite a big library of SDF functions included in this project (see references below). It is located at ```/project1/RTK/hg_sdf1```. Most if the stuff there is not yet implemented as an OP in this toolkit and its very simple to do that. You can simply make a new OP that just uses one of the functions from the lib (see for example the fGDF-op).
@@ -28,18 +26,38 @@ Let's go through an example, we want to create an OP that can only translate in 
 4. Make your changes:
 	- Rewrite the function now located at ```/project1/RTK/operators/translateY/processfun```. We will change it to contain the code:
 	``` 
-	vec2 thismap(vec3 p){
+	Sdf thismap(vec3 p){
 	p.y -= @Translate;
 	return inputOp1(p);
 	}
 	```
 
-Please note: Your function needs to take a vec3 and return a vec2(the first element is the distance, the second is a material ID. This is probably going to change soon to be a vec4 to enable interpolations between materials). Variables beginning with ```@``` are going to be parsed to reference the components custom parameters. ```inputOP1``` will be parsed to reference the OP's input.
+Please note: Your function needs to take a vec3 and return a Sdf. Variables beginning with ```@``` are going to be parsed to reference the components custom parameters. ```inputOP1``` will be parsed to reference the OP's input.
+The Sdf struct currently contains the following:
+```
+struct Sdf
+{
+	float x; // distance
+	float y; // material ID
+	bool reflect; // do reflection for this?
+	bool refract; // do refraction for this?
+	float material2; // in case of interpolating, the second material
+	float interpolant; // in case of interpolating, the interpolation value
+};
+```
+
 
 - customize your component to have exactly the right parameters. In our case we delete the original Transformxyz and add a float named ```Translate```. Only Floats and XYZ type parameters are supported at the moment.
 
-5. go to ```/project1/RTK/operators/translateY/filterSetup``` and run the ```filterSetup``` script.
+5. go to ```/project1/RTK/operators/translateY/filterSetup``` and run the ```filterSetup``` script. 
 6. Add your new op to the menu: go to ```/project1/RTK/menu/menu``` and add an entry in the ```table1``` in the corresponding column. It needs to be exactly the name of your new op.
+
+## New Materials
+Creating a new material is similar to creating a new OP.
+Copy for example the simple mat. Adjust the ```material``` text DAT inside. You can use all the stuff that is in the comment in the top line. For example ```ref``` contains the reflection color or ```refraction``` contains the refracted color(transparency color).
+If you want to use refraction or refraction, you also have to modify the material's ```process fun``` text DAT so e.g. ```res.refract = true```.
+After all that, rename the OP, run the ```filterSetup``` script as with a filter OP *and* run the ```matSetup/matSetupScript```.
+
 
 ## References
 Thanks to [MERCURY](http://mercury.sexy), (their [library](http://mercury.sexy/hg_sdf) is included here) and [Inigo Quilez](https://www.iquilezles.org/index.html) for all the good articles and formulas. Please check MERCURY's licence.

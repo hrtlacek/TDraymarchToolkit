@@ -2,7 +2,7 @@
 A Raymarch Toolkit for TouchDesigner
 ![alt text](demo.PNG)
 
-![alt text](rtkDemo.PNG)
+![alt text](refl.PNG)
 
 ## Usage:
 press shift+right click to open op create dialog for RTK. Place some ops, create a standard TouchDesigner render TOP, camera COMP and Light COMP to make use of RTKs render OP.

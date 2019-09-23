@@ -12,6 +12,9 @@ press shift+right click to open op create dialog for RTK. Place some ops, create
 - only one light supported
 - interpolation between 3 or more materials is broken.
 
+## Working with textures
+The RTK Component has a parameter ```Textures Comp```. Here a bas Comp is expected. in this component a number of TOPs can be placed. These should be named ```textureN``` where ```N``` is a number. When you add a texture, the ```reload textures``` pulse parameter of the RTK Component needs to be pulsed.
+
 ![alt text](RTKops.PNG)
 
 ## Make your own OPs

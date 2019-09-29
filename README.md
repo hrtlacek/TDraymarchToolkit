@@ -11,6 +11,7 @@ press shift+right click to open op create dialog for RTK. Place some ops, create
 - You cannot rename OPs without running into problems.
 - only one light supported
 - interpolation between 3 or more materials is broken.
+- the total maximum number of parameters is set to 100 and hard-coded at the moment. It is very easy to change that and will be adjustable soon. (Just in case you try to build something large [which I don't recommend at this point] and it breaks because of that[index error on ```params``` array.])
 
 ## Working with textures
 The RTK Component has a parameter ```Textures Comp```. Here a bas Comp is expected. in this component a number of TOPs can be placed. These should be named ```textureN``` where ```N``` is a number. When you add a texture, the ```reload textures``` pulse parameter of the RTK Component needs to be pulsed.

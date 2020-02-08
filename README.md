@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/205948014.svg)](https://zenodo.org/badge/latestdoi/205948014)
+
 # TDraymarchToolkit
 A Raymarch Toolkit for TouchDesigner
 ![alt text](demo.PNG)
